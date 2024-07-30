@@ -58,7 +58,7 @@ public class PlayerMovement : MonoBehaviour
             }
             else if (shadowIsMoving)
             {
-                if (Vector2.Distance(pathingScript.path[currentWaypointIndex], transform.position) < .1f)
+                if (Vector2.Distance(pathingScript.path[currentWaypointIndex], transform.position) < .01f)
                 {
                     currentWaypointIndex++;
                     shadowIsMoving = false;

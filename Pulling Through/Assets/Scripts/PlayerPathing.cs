@@ -60,9 +60,12 @@ public class PlayerPathing : MonoBehaviour
             path.Add(new Vector3(avgX, avgY, 0f));  // z value should always be 0 since this is 2d game
             Debug.Log("bye");
         }
+        int index = 0;
         foreach (Vector3 waypoint in path)
         {
-            Instantiate(waypointPrefab, waypoint, Quaternion.identity);
+            GameObject wp = Instantiate(waypointPrefab, waypoint, Quaternion.identity);
+            wp.GetComponent<WaypointController>().waypointIndex = index;
+            index++;
         }
     }
 }
