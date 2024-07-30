@@ -8,6 +8,8 @@ public class PlayerPathing : MonoBehaviour
     public GameObject player;
     private List<Vector3> positions = new List<Vector3>();
 
+    public int numWaypoints = 10;
+
     //public int[] difficulty = new int[10];  // COULD USE THESE TWO TO DETERMINE HOW MANY WAYPOINTS TO HAVE, BUT KEEPING AT 10 FOR NOW I GUESS
     //public int levelNumber;
 
@@ -42,7 +44,7 @@ public class PlayerPathing : MonoBehaviour
     {
         float avgX = 0f;
         float avgY = 0f;
-        int poolSize = positions.Count / 10;
+        int poolSize = positions.Count / numWaypoints;
         Debug.Log("pool size: " + poolSize);
 
         for (int i = 0; i < 10; i++) {

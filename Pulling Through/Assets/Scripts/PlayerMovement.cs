@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerMovement : MonoBehaviour
 {
+    public GameObject otherForm;
     private Rigidbody2D rb;
     private BoxCollider2D coll;
 
@@ -58,12 +59,23 @@ public class PlayerMovement : MonoBehaviour
             }
             else if (shadowIsMoving)
             {
-                if (Vector2.Distance(pathingScript.path[currentWaypointIndex], transform.position) < .01f)
+                if (currentWaypointIndex < pathingScript.numWaypoints)  // have not reached the last waypoint
                 {
-                    currentWaypointIndex++;
-                    shadowIsMoving = false;
+                    transform.position = Vector2.MoveTowards(transform.position, pathingScript.path[currentWaypointIndex], Time.deltaTime * sprintSpeed);
+                    if (Vector2.Distance(pathingScript.path[currentWaypointIndex], transform.position) < .01f)
+                    {
+                        currentWaypointIndex++;
+                        shadowIsMoving = false;
+                    }
                 }
-                transform.position = Vector2.MoveTowards(transform.position, pathingScript.path[currentWaypointIndex], Time.deltaTime * sprintSpeed);
+                else  // reached the last waypoint
+                {
+                    transform.position = Vector2.MoveTowards(transform.position, otherForm.transform.position, Time.deltaTime * sprintSpeed);
+                    if (Vector2.Distance(otherForm.transform.position, transform.position) < .01f)
+                    {
+                        shadowIsMoving = false;
+                    }
+                }
             }
         }
         else

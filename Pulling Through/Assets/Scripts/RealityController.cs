@@ -32,7 +32,7 @@ public class RealityController : MonoBehaviour
         }
     }
 
-    private void OnTriggerExit2D(Collider2D collision)
+    /*private void OnTriggerExit2D(Collider2D collision)
     {
         if (collision.CompareTag("Player"))
         {
@@ -42,7 +42,7 @@ public class RealityController : MonoBehaviour
             player.GetComponent<PlayerMovement>().inShadowMode = false;
             shadowPlayer.GetComponent<PlayerMovement>().inShadowMode = false;
         }
-    }
+    }*/
     // Start is called before the first frame update
     void Start()
     {

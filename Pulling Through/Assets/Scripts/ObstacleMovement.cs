@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class ObstacleMovement : MonoBehaviour
 {
@@ -26,6 +27,15 @@ public class ObstacleMovement : MonoBehaviour
     public bool movingDown = false;
     public bool movingLeft = false;
     public bool movingRight = false;
+
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.CompareTag("Shadow"))
+        {
+            SceneManager.LoadScene(0);
+        }
+    }
 
     // Start is called before the first frame update
     void Start()
